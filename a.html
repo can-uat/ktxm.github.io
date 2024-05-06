@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>微众银行</title>
+  </head>
+  <style>
+    a,
+    a:link,
+    a:visited,
+    a:hover,
+    a:active {
+      text-decoration: none;
+      color: inherit;
+    }
+    .bg {
+      background: url(./img/3.png) no-repeat;
+      background-size: 100%;
+      height: 180px;
+      padding: 0%;
+      /* display: flex;
+      align-items: center;
+      justify-content: center; */
+      text-align: center;
+      position: relative;
+      margin-bottom: 10px;
+    }
+    .num {
+      width: 40px;
+      height: 40px;
+      background-color: #ff476a;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 40px;
+      color: aliceblue;
+      position: absolute;
+      left: 0;
+      top: -70px;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+      font-weight: 800;
+    }
+    .in {
+      background: url(./img/4.png) no-repeat;
+      background-size: 100%;
+      height: 80px;
+      width: 300px;
+      padding: 0%;
+      position: absolute;
+      left: 0;
+      top: 60px;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+    }
+    .zf {
+      position: absolute;
+      left: 0;
+      color: #cccac9;
+      font-weight: 900;
+      bottom: 10px;
+      right: 0;
+      margin: auto;
+    }
+    .maskLayer {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 99;
+      display: none;
+    }
+    .popup {
+      width: 80%;
+      height: 25rem;
+      background-color: #ffffff;
+      z-index: 999;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -15rem;
+      margin-left: -40%;
+      text-align: center;
+    }
+    .maskLayerHz {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 99;
+      display: none;
+    }
+    .popup-hz {
+      width: 80%;
+      height: 23rem;
+      background-color: #ffffff;
+      z-index: 999;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -15rem;
+      text-align: center;
+      margin-left: -40%;
+    }
+    .maskLayerSc {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 99;
+      display: none;
+    }
+    .popup-sc {
+      width: 80%;
+      height: 20rem;
+      background-color: #ffffff;
+      z-index: 999;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -15rem;
+      text-align: center;
+      margin-left: -40%;
+    }
+    .maskLayerFj {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 99;
+      display: none;
+    }
+    .popup-fj {
+      width: 80%;
+      height: 20rem;
+      background-color: #ffffff;
+      z-index: 999;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -15rem;
+      text-align: center;
+      margin-left: -40%;
+    }
+    .maskLayerGz {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 99;
+      display: none;
+    }
+    .maskLayerCq {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 99;
+      display: none;
+    }
+    .popup-gz {
+      width: 80%;
+      height: 20rem;
+      background-color: #ffffff;
+      z-index: 999;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -15rem;
+      text-align: center;
+      margin-left: -40%;
+    }
+    .maskLayerGx {
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 99;
+      display: none;
+    }
+    .popup-gx {
+      width: 80%;
+      height: 20rem;
+      background-color: #ffffff;
+      z-index: 999;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -15rem;
+      text-align: center;
+      margin-left: -40%;
+    }
+    .popup-cq {
+      width: 80%;
+      height: 20rem;
+      background-color: #ffffff;
+      z-index: 999;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -15rem;
+      text-align: center;
+      margin-left: -40%;
+    }
+    .btn-close {
+      width: 15rem;
+      height: 5rem;
+      line-height: 5rem;
+      font-size: 1.5rem;
+      color: #000000;
+      text-align: center;
+      background-color: #8a78fe;
+    }
+  </style>
+  <script src="https://s3.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js"></script>
+
+  <body style="background: #ff476a">
+    <div class="box">
+      <div class="top">
+        <img src="./img/1.png" width="100%" height="100%" alt="" />
+      </div>
+      <div class="bannar">
+        <img
+          src="./img/2.png"
+          width="100%"
+          height="100%"
+          style="margin-top: -50px"
+          alt=""
+        />
+      </div>
+      <div class="content">
+        <div class="bg">
+          <div class="num">1</div>
+          <a
+            class="in"
+            href="https://sme.kcbebank.com/marketing/share.html?redirect_uri=https%3A%2F%2Fsme.kcbebank.com%2Fsme%3FinviterUserNo%3DUR403144505291726848%26channelNo%3DWECHAT_H5%26channelCode%3D99208A15wnru%26inviterChannelCode%3D99208A15wnru%26timestamp%3DgGKMx2cklRXVHokze6nWukOBMOeVScTx2shleEsC6%252BA%253D%26scope%3DY%26actCode%3DorgActCode%26referenceOpenId%3DoMHYr5lxyb35fYPIDNjrGEpCF2-U&scope=Y"
+          ></a>
+          <div class="zf">天津资方-金城银行金企贷</div>
+        </div>
+        <div class="bg">
+          <div class="num">2</div>
+          <a class="in btn-click" href="#javascript"></a>
+          <!-- https://direct.z-bank.com/portal-loan/xzsdent/#/login -->
+          <div class="zf">武汉资方-众邦银行众商贷</div>
+        </div>
+        <div class="bg">
+          <div class="num">3</div>
+          <a
+            class="in"
+            href="https://ibp-h5.csxbank.com:3009/xydNewLogin?qrCodeId=528765659491957663"
+          ></a>
+          <div class="zf">浙江资方-宁波银行容易贷</div>
+        </div>
+        <div class="bg">
+          <div class="num">4</div>
+          <a class="in btn-click-hz" href="#javascript"></a>
+          <!-- //https://imax.hzbank.com.cn/NeobankServer/share/view/CompanyLoanNew.html?Y29kZT1CR1kxMSZwbGF0Zm9ybT0wMA== -->
+          <div class="zf">杭州资方-杭州银行百业贷</div>
+        </div>
+        <div class="bg">
+          <div class="num">5</div>
+          <a
+            class="in"
+            href="https://onlineloan.suningbank.com/merchant/#/appOther/MicApplyForCreditH5/1/QD1834"
+          ></a>
+          <div class="zf">江苏资方-苏宁银行微商贷</div>
+        </div>
+        <div class="bg">
+          <div class="num">6</div>
+          <a
+            class="in"
+            href="https://ibp-h5.csxbank.com:3009/xydNewLogin?qrCodeId=528765659491957663"
+          ></a>
+          <div class="zf">湖南资方-三湘银行</div>
+        </div>
+        <div class="bg">
+          <div class="num">7</div>
+          <a class="in btn-click-sc" href="#javascript"></a>
+          <!-- http://weixin.qq.com/q/02YB7P5ujscEk145bz1Bcw -->
+          <div class="zf">四川资方-新网银行</div>
+        </div>
+        <div class="bg">
+          <div class="num">8</div>
+          <a class="in btn-click-gx" href="#javascript"></a>
+          <div class="zf">浙江资方-容易租</div>
+        </div>
+        <div class="bg">
+          <div class="num">9</div>
+          <a class="in btn-click-gz" href="#javascript"></a>
+          <!-- https://direct.z-bank.com/portal-loan/xzsdent/#/login -->
+          <div class="zf">重庆资方-富民银行</div>
+        </div>
+        <div class="bg">
+          <div class="num">10</div>
+          <a class="in btn-click-cq" href="#javascript"></a>
+          <div class="zf">四川资方-新网银行好业</div>
+        </div>
+      </div>
+    </div>
+    <div class="maskLayer">
+      <!-- 弹窗 -->
+      <div class="popup">
+        <img src="./img/wuhanzifang.png" width="300px" height="300px" alt="" />
+        长按识别二维码
+      </div>
+    </div>
+    <div class="maskLayerHz">
+      <!-- 弹窗 -->
+      <div class="popup-hz">
+        <img
+          src="./img/hangzhouzifang.png"
+          width="300px"
+          height="300px"
+          alt=""
+        />
+        长按识别二维码
+      </div>
+    </div>
+    <div class="maskLayerSc">
+      <!-- 弹窗 -->
+      <div class="popup-sc">
+        <img src="./img/sczf.jpg" width="300px" height="280px" alt="" />
+        长按识别二维码
+      </div>
+    </div>
+    <div class="maskLayerFj">
+      <!-- 弹窗 -->
+      <div class="popup-fj">
+        <img src="./img/fjzf.png" width="300px" height="250px" alt="" />
+        长按识别二维码
+      </div>
+    </div>
+    <div class="maskLayerGx">
+      <!-- 弹窗 -->
+      <div class="popup-gx">
+        <img
+          src="./img/zhejiangzifang.jpg"
+          width="300px"
+          height="250px"
+          alt=""
+        />
+        长按识别二维码
+      </div>
+    </div>
+    <div class="maskLayerGz">
+      <!-- 弹窗 -->
+      <div class="popup-gz">
+        <img
+          src="./img/chongqinzifang-fumin.png"
+          width="300px"
+          height="250px"
+          alt=""
+        />
+        长按识别二维码
+      </div>
+    </div>
+
+    <div class="maskLayerCq">
+      <!-- 弹窗 -->
+      <div class="popup-cq">
+        <img src="./img/cqzf.jpg" width="300px" height="250px" alt="" />
+        长按识别二维码
+      </div>
+    </div>
+  </body>
+  <script>
+    //关闭弹出层
+    $(document).ready(function () {
+      $(".btn-click").on("click", function () {
+        // 点击出现弹窗事件
+        $(".maskLayer,.popup").show();
+        // 禁止页面滑动
+        $("body").css("overflow", "hidden");
+      });
+      $(".btn-close,.maskLayer").on("click", function () {
+        // 点击关闭弹窗按钮及遮罩层关闭弹窗事件
+        $(".maskLayer,.popup").hide();
+        // 解除禁止滑动
+        $("body").css("overflow", "");
+      });
+      //杭州
+      $(".btn-click-hz").on("click", function () {
+        // 点击出现弹窗事件
+        $(".maskLayerHz,.popup-hz").show();
+        // 禁止页面滑动
+        $("body").css("overflow", "hidden");
+      });
+      $(".btn-close,.maskLayerHz").on("click", function () {
+        // 点击关闭弹窗按钮及遮罩层关闭弹窗事件
+        $(".maskLayerHz,.popup-hz").hide();
+        // 解除禁止滑动
+        $("body").css("overflow", "");
+      });
+      //四川
+      $(".btn-click-sc").on("click", function () {
+        // 点击出现弹窗事件
+        $(".maskLayerSc,.popup-sc").show();
+        // 禁止页面滑动
+        $("body").css("overflow", "hidden");
+      });
+      $(".btn-close,.maskLayerSc").on("click", function () {
+        // 点击关闭弹窗按钮及遮罩层关闭弹窗事件
+        $(".maskLayerSc,.popup-sc").hide();
+        // 解除禁止滑动
+        $("body").css("overflow", "");
+      });
+      //福建
+      $(".btn-click-fj").on("click", function () {
+        // 点击出现弹窗事件
+        $(".maskLayerFj,.popup-fj").show();
+        // 禁止页面滑动
+        $("body").css("overflow", "hidden");
+      });
+      $(".btn-close,.maskLayerFj").on("click", function () {
+        // 点击关闭弹窗按钮及遮罩层关闭弹窗事件
+        $(".maskLayerFj,.popup-fj").hide();
+        // 解除禁止滑动
+        $("body").css("overflow", "");
+      });
+      //广西
+
+      $(".btn-click-gx").on("click", function () {
+        // 点击出现弹窗事件
+        $(".maskLayerGx,.popup-gx").show();
+        // 禁止页面滑动
+        $("body").css("overflow", "hidden");
+      });
+      $(".btn-close,.maskLayerGx").on("click", function () {
+        // 点击关闭弹窗按钮及遮罩层关闭弹窗事件
+        $(".maskLayerGx,.popup-gx").hide();
+        // 解除禁止滑动
+        $("body").css("overflow", "");
+      });
+      //guizhou
+      $(".btn-click-gz").on("click", function () {
+        // 点击出现弹窗事件
+        $(".maskLayerGz,.popup-gz").show();
+        // 禁止页面滑动
+        $("body").css("overflow", "hidden");
+      });
+      $(".btn-close,.maskLayerGz").on("click", function () {
+        // 点击关闭弹窗按钮及遮罩层关闭弹窗事件
+        $(".maskLayerGz,.popup-gz").hide();
+        // 解除禁止滑动
+        $("body").css("overflow", "");
+      });
+      //重庆
+      $(".btn-click-cq").on("click", function () {
+        // 点击出现弹窗事件
+        $(".maskLayerCq,.popup-cq").show();
+        // 禁止页面滑动
+        $("body").css("overflow", "hidden");
+      });
+      $(".btn-close,.maskLayerCq").on("click", function () {
+        // 点击关闭弹窗按钮及遮罩层关闭弹窗事件
+        $(".maskLayerCq,.popup-cq").hide();
+        // 解除禁止滑动
+        $("body").css("overflow", "");
+      });
+    });
+  </script>
+</html>
